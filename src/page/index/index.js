@@ -1,6 +1,3 @@
-var _A  = require('../util/util');
+//var _A  = require('../util/util');
 
-require('../index/index.css')
-
-
-console.log("index.js");
+console.log("this is index js");
