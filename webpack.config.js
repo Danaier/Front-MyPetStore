@@ -13,6 +13,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 //html文件打包
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
+
 //
 const webpack = require('webpack');
 
@@ -80,6 +82,23 @@ var getCartHtmlConfig = function(name){
   } 
 }
 
+
+//view/order下的html请用这个打包
+var getOrderHtmlConfig = function(name){
+  return  {
+
+    template  : './src/view/order/'+name+'.html',
+    filename  : 'view/order/'+name+'.html',
+    inject    : true,
+    hash      : true,
+    chunks    : ['common',name],
+    minify    : {
+      collapseWhitespace :false,
+    }
+    
+  }
+}
+
 var config = {
   //入口
   entry: {
@@ -87,7 +106,8 @@ var config = {
     'index'         : ['./src/page/index/index.js'],
     'catalog-main'  : ['./src/page/catalog/catalog-main/index.js'],
     'signin'        : ['./src/page/account/signin/index.js'],
-    'cart'          : ['./src/page/cart/cart/index.js']
+    'cart'          : ['./src/page/cart/cart/index.js'],
+    'view-order'    : ['./src/page/order/view-order/index.js'],
   },
   //出口
   // output: {
@@ -140,6 +160,8 @@ var config = {
     new HtmlWebpackPlugin(getAccountHtmlConfig('signin')),
     //view/account下的html请用这个打包
     new HtmlWebpackPlugin(getCartHtmlConfig('cart')),
+
+    new HtmlWebpackPlugin(getOrderHtmlConfig('view-order')),
 
     
     //热部署
