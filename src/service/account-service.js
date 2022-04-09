@@ -6,7 +6,7 @@ var _account_service = {
             url     :   _util.getSeverURL('account/get_login_account_info'),
             // url     :   _util.getSeverURL('catalog/categories'),
             method  :   'POST',
-            success :   resolve,
+            success :   resolve, 
             error   :   reject
         });
     },

@@ -1,2 +1,2 @@
-require('page/common/header/index.js');
+// require('page/common/header/index.js');
 

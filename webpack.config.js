@@ -64,13 +64,30 @@ var getAccountHtmlConfig = function(name){
   }
 }
 
+//view/cart下的html请用这个打包
+var getCartHtmlConfig = function(name){
+  return  {
+
+    template  : './src/view/cart/'+name+'.html',
+    filename  : 'view/cart/'+name+'.html',
+    inject    : true,
+    hash      : true,
+    chunks    : ['common',name],
+    minify    : {
+      collapseWhitespace :false,
+    }
+    
+  } 
+}
+
 var config = {
   //入口
   entry: {
     'common'        : ['./src/page/common/index.js'],
     'index'         : ['./src/page/index/index.js'],
     'catalog-main'  : ['./src/page/catalog/catalog-main/index.js'],
-    'signin'        : ['./src/page/account/signin/index.js']
+    'signin'        : ['./src/page/account/signin/index.js'],
+    'cart'          : ['./src/page/cart/cart/index.js']
   },
   //出口
   // output: {
@@ -121,6 +138,8 @@ var config = {
     new HtmlWebpackPlugin(getCatalogHtmlConfig('catalog-main')),
     //view/account下的html请用这个打包
     new HtmlWebpackPlugin(getAccountHtmlConfig('signin')),
+    //view/account下的html请用这个打包
+    new HtmlWebpackPlugin(getCartHtmlConfig('cart')),
 
     
     //热部署

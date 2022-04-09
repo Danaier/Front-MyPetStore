@@ -68,14 +68,14 @@ const signin = function(){
             success :function(res){
                 if(res.status===0){
                     if(res.msg==="password不正确"){
-                        //todao登录失败
+                        //todo登录失败
                     }
                     else{
                         //todo登录成功
                         //header.init();
                         $('#signin').hide(); 
                         resolve("登录成功");
-                        //window.location.href = "../../view/catalog/catalog-main.html";
+                        window.location.href = "../../view/catalog/catalog-main.html";
                     }
                 }   
                 else{
