@@ -108,6 +108,8 @@ var config = {
     'signin'        : ['./src/page/account/signin/index.js'],
     'cart'          : ['./src/page/cart/cart/index.js'],
     'view-order'    : ['./src/page/order/view-order/index.js'],
+    'order-form'    : ['./src/page/order/order-form/index.js'],
+    'confirm-order' : ['./src/page/order/confirm-order/index.js'],
   },
   //出口
   // output: {
@@ -163,6 +165,9 @@ var config = {
 
     new HtmlWebpackPlugin(getOrderHtmlConfig('view-order')),
 
+    new HtmlWebpackPlugin(getOrderHtmlConfig('order-form')),
+    
+    new HtmlWebpackPlugin(getOrderHtmlConfig('confirm-order')),
     
     //热部署
     new webpack.HotModuleReplacementPlugin()
