@@ -2,51 +2,64 @@
 <html lang="en">
 <head>
     <%= require('../common/head.htm') %>
-
 </head>
+
 <body>
+    <style>
+        .okTips{
+            color : green;
+        }
+        .errorTips{
+            color : red;
+        }
+    </style>
+
     <%= require('../common/header.htm') %>
-
+    
+    <span id="errorMsg"></span>
+    
 <div id="BackLink">
-    <a href="/catalog/main">Return to Main Menu</a>
+    <a href="../../view/catalog/catalog-main.html">Return to Main Menu</a>
 </div>
-<!-- <font color="red" th:if="${msg}!=null" th:text="${msg}"></font> -->
-
-
 
     <div id="Sign">
         <table align="center">
             <tr>
                 <td>Username:</td>
                 <td>
-                    <input type="text" id="username" name = "username"  required>
+                    <input type="text" id="username" name = "username"  required="required">
                 </td>
                 <td id = "iEI"> <span id="isExistInfo"></span></td>
             </tr>         <br>
             <tr>
                 <td >Password:</td>
                 <td><input type="password" name = "password" id="password" required="required"></td>
-                <!-- <td id="FGTPSW"><a id="FGTPSWmsg"> forget password?</a></td> -->
+                <td id="FGTPSW"><a id="FGTPSWmsg"> forget password?</a></td>
             </tr>
-            <!-- <tr>
+        <!--todo:验证码部分-->
+        <!--
+            <tr>
                 <td> Verification Code:</td>
                 <td><input type="text" name="inputCode" required></td>
             </tr>
             <tr>
                 <td> <img id="myImage" name="myImage" th:src="@{/account/authCode}"></td>
-                <td><a href="javascript:void(0)" onclick="myReload()">uncleary!change the image</a></td> -->
+                <td><a href="javascript:void(0)" onclick="myReload()">uncleary!change the image</a></td>
             </tr>
-
-
-
+        -->
             <tr>
-                <td> <input type="submit" value="Signin" id="btn"></td>
+                <td> <input type="submit" value="Signin" id="btn" ></td>
+                <td> <input type="button" value="through Phone" id="loginThroughPhone"></td>
             </tr>
-
+            
         </table>
+        
     </div>
 
-<!-- <form action="/account/signinPhone" method="post" id="signInPhoneForm">
+
+<!--todo:手机号验证部分-->
+<!--
+<form action="/account/signinPhone" method="post" id="signInPhoneForm">
     <div id="SignPhone">
         <table align="center">
 
@@ -71,9 +84,6 @@
                 </td>
             </tr>
 
-
-
-
             <tr>
                 <td> <input type="submit" value="Signin"></td>
                 <td> <input type="button" value="through Password" id="loginThroughPassword"></td>
@@ -81,14 +91,12 @@
 
         </table>
     </div>
-</form> -->
+</form>
+-->
 
-
-<!-- <p align="center">
-    Need a username and password?<a href="/account/viewRegister">Resgister Now!</a>
-</p> -->
-
-<div th:replace="/common/footer"></div>
+<p align="center">
+    Need a username and password?<a href="../account/account-register.html">Resgister Now!</a>
+</p>
 
 <%= require('../common/footer.htm') %>
     

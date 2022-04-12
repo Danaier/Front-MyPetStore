@@ -105,9 +105,13 @@ var config = {
     'common'        : ['./src/page/common/index.js'],
     'index'         : ['./src/page/index/index.js'],
     'catalog-main'  : ['./src/page/catalog/catalog-main/index.js'],
-    'signin'        : ['./src/page/account/signin/index.js'],
+
+    'account-signin'     : ['./src/page/account/account-signin/index.js'],
+    'account-register'   : ['./src/page/account/account-register/index.js'],
+    'account-edit'       : ['./src/page/account/account-edit/index.js'],
+
     'cart'          : ['./src/page/cart/cart/index.js'],
-    'view-order'    : ['./src/page/order/view-order/index.js'],
+    'view-order'    : ['./src/page/order/view-order/index.js']
   },
   //出口
   // output: {
@@ -157,12 +161,14 @@ var config = {
     //view/catalog下的html请用这个打包
     new HtmlWebpackPlugin(getCatalogHtmlConfig('catalog-main')),
     //view/account下的html请用这个打包
-    new HtmlWebpackPlugin(getAccountHtmlConfig('signin')),
+    new HtmlWebpackPlugin(getAccountHtmlConfig('account-signin')),
     //view/account下的html请用这个打包
     new HtmlWebpackPlugin(getCartHtmlConfig('cart')),
 
     new HtmlWebpackPlugin(getOrderHtmlConfig('view-order')),
 
+    new HtmlWebpackPlugin(getAccountHtmlConfig('account-register')),
+    new HtmlWebpackPlugin(getAccountHtmlConfig('account-edit')),
     
     //热部署
     new webpack.HotModuleReplacementPlugin()

@@ -24,10 +24,6 @@ var header = {
         this.loadAccountInfo();
         return this;
     },
-
-
-    
-
     bindEvents : function(){
 
         var _this = this;
@@ -57,3 +53,5 @@ var header = {
     }
 };
 module.exports = header.init();
+
+

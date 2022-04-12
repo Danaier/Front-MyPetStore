@@ -13,13 +13,21 @@ var _account_service = {
     login : function(resolve,reject){
         _util.request({
             url     :   _util.getSeverURL('account/login'),
-            data    :   usr,
+            data    :   user,
             method  :   'POST',
             success :   resolve,
             error   :   reject
         });
+    },
+    register: function(resolve,reject){
+        _util.request({
+            url     :   _util.getSeverURL('account/register'),
+            data    :   user,
+            method  :   'POST',
+            success :   resolve,
+            error   :   reject 
+        })
     }
-    
 };
 
 module.exports = _account_service;

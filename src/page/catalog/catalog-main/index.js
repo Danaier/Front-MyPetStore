@@ -15,3 +15,4 @@ const fastsignin = function(){
 }
 
 $('#fast_signin').on('click',fastsignin);
+

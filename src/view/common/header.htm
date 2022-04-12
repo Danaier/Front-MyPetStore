@@ -13,7 +13,7 @@
 
             <img align="middle" src="../../images/separator.gif" />
 
-            <a id="signin" href="../../view/account/signin.html">Sign In</a>
+            <a id="signin" href="../../view/account/account-signin.html">Sign In</a>
 
 <!--                <img align="middle" src="../../images/separator.gif" />-->
 
@@ -21,7 +21,7 @@
 
             <img align="middle" src="../../images/separator.gif" />
 
-            <a href="/account/viewMyAccount">My Account</a>
+            <a id="getAccount" href="../../view/account/account-edit.html" onclick="getAccount()">My Account</a>
 
             <img align="middle" src="../../images/separator.gif" />
 
@@ -44,7 +44,7 @@
 
         <img src="../../images/separator.gif"/>
         <img src="../../images/separator.gif"/>
-        <a th:if="${session.allCategoryList.size()} == 0 ">No Categor</a>
+        <a th:if="${session.allCategoryList.size()} == 0 ">No Category</a>
         <span th:if="${session.allCategoryList.size()} > 0" >
             <span th:each="Category:${session.allCategoryList}">
                 <a th:text="${Category.categoryId}" th:href="@{/catalog/viewCategory(categoryId=${Category.categoryId})}"></a>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <%= require('../common/head.htm') %>
+</head>
+
+<body>
+    <style>
+        .okTips{
+            color : green;
+        }
+        .errorTips{
+            color : red;
+        }
+    </style>
+
+    <%= require('../common/header.htm') %>
+    
+    <div id="BackLink">
+        <a href="../catalog/catalog-main.html">Return to Main Menu</a>
+    </div>
+    <div id="Register">
+        <h1 align="center">User Information</h1>
+        <table align="center">
+    
+            <tr>
+                <td>Username:</td>
+                <td>
+                    <input type="text" id="username" name = "username" >
+                </td>
+                <td id = "iEI"> <span id="isExistInfo"></span></td>
+            </tr>
+    
+            <tr>
+                <td> Password:  </td>
+                <td><input type="password" name="password" id="password">
+                </td>
+            </tr>
+    
+            <tr>
+                <td>
+                    Repeat Password:
+                </td>
+                <td >
+                    <input type="password" name="repeatpwd" id="repeatpwd" >
+                </td>
+            </tr>
+    
+            <tr>
+                <td>
+                    Phone:
+                </td>
+                <td >
+                    <input type="text" name="phoneNumber" id="phoneNumber" required>
+                </td>
+            </tr>
+    
+            <tr>
+                <td>
+                    <input type="button"id="phoneCode" value="Send phoneCode">
+                </td>
+                <td>
+                    <input type="text" id="phoneVCode" name="inputVCode" value="">
+                </td>
+            </tr>
+    
+            <tr>
+                <td>
+                    <h3 align="center">Account Information</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    First Name:
+                </td>
+                <td >
+                    <input type="text" name="firstname" id="firstname" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name:
+                </td>
+                <td >
+                    <input type="text" name="lastname" id="lastname" >
+                </td>
+            </tr>
+    
+            <tr>
+                <td>
+                    Email:
+                </td>
+                <td >
+                    <input type="email" name="email" id="email">
+                </td>
+            </tr>
+    
+            <tr>
+                <td>
+                    Address1:
+                </td>
+                <td >
+                    <input type="text" name="address1" id="address1" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address2:
+                </td>
+                <td >
+                    <input type="text" name="address2" id="address2" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City:
+                </td>
+                <td >
+                    <input type="text" name="city" id="city" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    State:
+                </td>
+                <td >
+                    <input type="text" name="state" id="state" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Zip:
+                </td>
+                <td >
+                    <input type="text" name="zip" id="zip" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Country:
+                </td>
+                <td >
+                    <input type="text" name="country" id="country" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 align="center">Profile Information</h3>
+                </td>
+            </tr>
+    
+            <tr>
+                <td> Language Preference: </td>
+                <td>
+                    <select name="languagepre" id="languagepre">
+                        <option value="English">English</option>
+                        <option value="Janpenese">Janpenese</option>
+                        <option value="Chinese">Chinese</option>
+                    </select>
+                </td>
+            </tr>
+    
+            <!--todo:验证码-->
+            <!--
+                <tr>
+                <td> Verification Code:</td>
+                <td><input type="text" name="inputCode" required></td>
+            </tr>
+            <tr>
+                <td> <img id="myImage" name="myImage" src="/account/authCode"></td>
+                <td><a href="javascript:void(0)" onclick="myReload()">uncleary!change the image</a></td>
+            </tr>
+            -->
+            <!--
+                <tr>
+                <td > <font color="red" th:text="${reminder}">错误提示</font></td>
+            </tr>
+            -->
+            
+            <tr>
+                <td><input type="submit" value="Save" id="registerBtn"></td>
+            </tr>
+        </table>
+    </div>
+    
+    <%= require('../common/footer.htm') %>
+
+</body>
+
+</html>
+
