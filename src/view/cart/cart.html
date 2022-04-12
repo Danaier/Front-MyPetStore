@@ -34,7 +34,7 @@
                 </tr>
 
 
-                <tr th:each="cartItem:${cart}" th:id="${cartItem.item.itemId}" v-if="cartIsNotEmpty" v-for="cartItem in cart">
+                <tr :id=cartItem.item.itemId v-if="cartIsNotEmpty" v-for="cartItem in cart">
                     <td>
                         <a th:text="${cartItem.item.itemId}"
                            th:href="@{/catalog/viewItem(itemId=${cartItem.item.itemId},
@@ -71,20 +71,18 @@
                         {{ cartItem.inStock }}
                     </td>
                     <td>
-                        <input type="text" :name=cartItem.item.itemId :value=cartItem.quantity @blur="updateCartItem"/>
+                        <input type="text" :name=cartItem.item.itemId :value=cartItem.quantity ref="inputQuantity" @blur="updateCartItem($event)" />
                     </td>
-                    <td :formatter="value => `${value} S`" :parser="value => value.replace(' S', '')">
-                        <!-- <fmt:formatNumber th:text="${cartItem.item.listPrice}" pattern="$#,##0.00"/> -->
-                        {{ cartItem.item.listPrice }}
+                    <td>
+                        {{ cartItem.item.listPrice | currency('$') }}
                     </td>
-                    <td :formatter="value => `${value} S`" :parser="value => value.replace(' S', '')">
+                    <td>
                         <div :id="'itemtotalcost'+cartItem.item.itemId">
-                            <!-- <fmt:formatNumber th:text="${cartItem.total}" pattern="$#,##0.00" /> -->
-                            {{ cartItem.total }}
+                            {{ cartItem.total | currency('$') }}
                         </div>
                     </td>
                     <td>
-                        <a :href="'/cart/removeItemFromCart?itemId='+cartItem.item.itemId" class="Button">Remove</a>
+                        <a href="#" class="Button" :name=cartItem.item.itemId @click="removeItemFromCart($event)">Remove</a>
                     </td>
                 </tr>
             </table>
@@ -98,7 +96,7 @@
         </form>
 
         <p v-if="cartIsNotEmpty">
-            <a href="../../view/order/view-order.html" class="Button">Proceed to Checkout</a>
+            <a href="../../view/order/order-form.html" class="Button">Proceed to Checkout</a>
         </p>
     </div>
 

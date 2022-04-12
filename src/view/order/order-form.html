@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <%= require('../common/head.htm') %>
+
+</head>
+<body>
+    <%= require('../common/header.htm') %>
+
+<div id="BackLink">
+    <a href="/catalog/main">Return to Main Menu</a>
+</div>
+
+<div id="Catalog">
+<!-- <form action="http://localhost:8090/order/confirmOrder"  method="POST"> -->
+    <table>
+        <tr>
+            <th colspan=2>Payment Details</th>
+        </tr>
+        <tr>
+            <td>Card Type:</td>
+            <td>
+                <input type="text" name="cardType" id="cardType"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Card Number:</td>
+            <td>
+                <input id="creditCard" type="text" name="creditCard" >
+            </td>
+        </tr>
+        <tr>
+            <td>Expiry Date (MM/YYYY):</td>
+            <td>
+                <input id="expiryDate" type="text" name="expiryDate" >
+            </td>
+        </tr>
+
+        <tr>
+            <th colspan=2>Billing Address</th>
+        </tr>
+        <tr>
+            <td>First name:</td>
+            <td>
+                <input type="text" name="firstName" id="billToFirstName"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td>
+                <input type="text" name="lastName" id="billToLastName"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Address 1:</td>
+            <td>
+                <input type="text" name="address1" id="billAddress1"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Address 2:</td>
+            <td>
+                <input type="text" name="address2" id="billAddress2"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td>
+                <input type="text" name="city" id="billCity"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td>
+                <input type="text" name="state"  id="billState"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Zip:</td>
+            <td>
+                <input type="text" name="zip" id="billZip"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td>
+                <input type="text" name="country" id="billCountry"  readonly>
+            </td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <input id="shippingAddressRequired" type="checkBox" name="shippingAddressRequired" value="shippingAddressRequired" >
+                Ship to different address...
+            </td>
+        </tr>
+    </table>
+
+    <table id="Shipping"></table>
+    <input id="submit" type="submit" value="Continue">
+
+</div>
+
+
+
+<%= require('../common/footer.htm') %>
+    
+</body>
+</html>

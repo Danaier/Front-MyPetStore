@@ -32,7 +32,7 @@ var _util = {
         });
     },
     doLogin     : function(){
-        window.location.href = '../account/signin.html?redirect='+encodeURIComponent(window.location.href);
+        window.location.href = '../account/account-signin.html?redirect='+encodeURIComponent(window.location.href);
     },
     getSeverURL :  function(path){
         return config.serverHost + path;

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <%= require('../common/head.htm') %>
+
+</head>
+<body>
+    <%= require('../common/header.htm') %>
+
+<div id="BackLink">
+    <a href="/catalog/main">Return to Main Menu</a>
+</div>
+
+<div id="Catalog">
+    Please confirm the information below and then press continue...
+    <form action="http://localhost:8090/order/finalOrder" method="post">
+    <table>
+        <tr>
+            <th align="center" colspan="2" >
+                <span th:text="'Order'+${session.order.orderId}"></span>
+                <fmt:formatDate th:value="${session.order.orderDate}" pattern="yyyy/MM/dd hh:mm:ss" />
+            </th>
+        </tr>
+        <tr>
+            <th colspan="2">Payment Details</th>
+        </tr>
+        <tr>
+            <td>Card Type:</td>
+            <td id="cardType"> </td>
+        </tr>
+        <tr>
+            <td>Card Number:</td>
+            <td id="creditCard"> </td>
+        </tr>
+        <tr>
+            <td>Expiry Date (MM/YYYY):</td>
+            <td id="expiryDate"> </td>
+        </tr>
+        <tr>
+            <td>Courier:</td>
+            <td id="courier"></td>
+        </tr>
+
+        <tr>
+            <th colspan="2">Billing Address</th>
+        </tr>
+        <tr>
+            <td>First name:</td>
+            <td id="billToFirstName"></td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td id="billToLastName"></td>
+        </tr>
+        <tr>
+            <td>Address 1:</td>
+            <td id="billAddress1"></td>
+        </tr>
+        <tr>
+            <td>Address 2:</td>
+            <td id="billAddress2"></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td id="billCity"></td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td id="billState"></td>
+        </tr>
+        <tr>
+            <td>Zip:</td>
+            <td id="billZip"></td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td id="billCountry" ></td>
+        </tr>
+
+
+        <tr>
+            <th colspan="2">Shipping Address</th>
+        </tr>
+        <tr>
+            <td>First name:</td>
+            <td  id="shipToFirstName"></td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td  id="shipToLastName" ></td>
+        </tr>
+        <tr>
+            <td>Address 1:</td>
+            <td id="shipAddress1"  ></td>
+        </tr>
+        <tr>
+            <td>Address 2:</td>
+            <td id="shipAddress2"  ></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td id="shipCity" ></td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td id="shipState" ></td>
+        </tr>
+        <tr>
+            <td>Zip:</td>
+            <td id="shipZip" ></td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td id="shipCountry"></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" name="confirmed" value="支付宝支付">
+</form>
+</div>
+
+
+
+<%= require('../common/footer.htm') %>
+    
+</body>
+</html>

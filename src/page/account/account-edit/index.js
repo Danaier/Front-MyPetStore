@@ -11,7 +11,6 @@ const editAccount=function(){
             data:{
                 username    :   $('#username').val(),
                 password    :   $('#password').val(),
-                repeatpwd   :   $('#repeatpwd').val(),
                 phoneVCode  :   $('#phoneVCode').val(),
                 firstname   :   $('#firstname').val(),
                 lastname    :   $('#lastname').val(),
@@ -21,7 +20,7 @@ const editAccount=function(){
                 state       :   $('#state').val(),
                 zip         :   $('#zip').val(),
                 country     :   $('#country').val(),
-                languagepre :   $('languagepre').val()
+                languagepre :   $('#languagepre').val()
             },
             success:function(res){
                 if(res.status===0){
@@ -46,52 +45,6 @@ const editAccount=function(){
 }
 
 $('#editbtn').on('click',editAccount);
-
-//若用户已登录，则返回账户信息，否则返回错误信息
-const getAccount=function(){
-    return new Promise(function(resolve,reject){
-        $.ajax({
-            /*xhrFields: {
-                withCredentials: true
-            },*/
-            type:"POST",
-            url:"http://localhost:8090/account/get_login_account_info",
-            dataType:"json",
-            success:function(res){
-                if(res.status===0){
-                    if(res.msg==="没有用户登录"){
-                        alert("用户未登录");
-                    }else{
-                    //从后端传值到前端
-                    let data=res.data;
-                    console.log(data);
-                    $('#username').text(data.username);
-                    $('#password').text(data.password);
-                    $('#repeatpwd').text(data.password);
-                    $('#phoneNumber').text(data.phone);
-                    $('#firstname').text(data.firstname);
-                    $('#lastname').text(data.lastname);
-                    $('#email').text(data.email);
-                    $('#address1').text(data.address1);
-                    $('#address2').text(data.address2);
-                    $('#city').text(data.city);
-                    $('#zip').text(data.zip);
-                    $('#state').text(data.state);
-                    $('#country').text(data.country);
-                    $('#languagepre').text(data.languagepre);
-                    }
-                }else{
-                    alert('fail');
-                }
-            },
-            error:function(){
-                window.alert('error');
-            }
-        })
-    })
-}
-
-$('#getAccount').on('click',getAccount);
 
 /*
 //判断用户是否登录

@@ -105,13 +105,19 @@ var config = {
     'common'        : ['./src/page/common/index.js'],
     'index'         : ['./src/page/index/index.js'],
     'catalog-main'  : ['./src/page/catalog/catalog-main/index.js'],
-
+    
     'account-signin'     : ['./src/page/account/account-signin/index.js'],
     'account-register'   : ['./src/page/account/account-register/index.js'],
     'account-edit'       : ['./src/page/account/account-edit/index.js'],
 
     'cart'          : ['./src/page/cart/cart/index.js'],
-    'view-order'    : ['./src/page/order/view-order/index.js']
+
+    'view-order'    : ['./src/page/order/view-order/index.js'],
+
+    'view-order'    : ['./src/page/order/view-order/index.js'],
+    'order-form'    : ['./src/page/order/order-form/index.js'],
+    'confirm-order' : ['./src/page/order/confirm-order/index.js'],
+
   },
   //出口
   // output: {
@@ -167,8 +173,14 @@ var config = {
 
     new HtmlWebpackPlugin(getOrderHtmlConfig('view-order')),
 
+
     new HtmlWebpackPlugin(getAccountHtmlConfig('account-register')),
     new HtmlWebpackPlugin(getAccountHtmlConfig('account-edit')),
+
+    new HtmlWebpackPlugin(getOrderHtmlConfig('order-form')),
+    
+    new HtmlWebpackPlugin(getOrderHtmlConfig('confirm-order')),
+
     
     //热部署
     new webpack.HotModuleReplacementPlugin()
