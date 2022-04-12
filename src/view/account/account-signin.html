@@ -5,6 +5,7 @@
 </head>
 
 <body>
+    
     <style>
         .okTips{
             color : green;
@@ -15,40 +16,42 @@
     </style>
 
     <%= require('../common/header.htm') %>
-    
+    <%= require('./account-forgetPassword.htm') %>
     <span id="errorMsg"></span>
     
 <div id="BackLink">
     <a href="../../view/catalog/catalog-main.html">Return to Main Menu</a>
 </div>
 
+
+<form action="#" method="post" id="signInPasswordForm">
     <div id="Sign">
         <table align="center">
             <tr>
                 <td>Username:</td>
                 <td>
-                    <input type="text" id="username" name = "username"  required="required">
+                    <input type="text"  name = "username"  id="signin_name" required="required">
                 </td>
                 <td id = "iEI"> <span id="isExistInfo"></span></td>
             </tr>         <br>
             <tr>
                 <td >Password:</td>
-                <td><input type="password" name = "password" id="password" required="required"></td>
+                <td><input type="password" name = "password" id="signinpsw" required="required"></td>
                 <td id="FGTPSW"><a id="FGTPSWmsg"> forget password?</a></td>
             </tr>
         <!--todo:验证码部分-->
-        <!--
+        
             <tr>
                 <td> Verification Code:</td>
                 <td><input type="text" name="inputCode" required></td>
             </tr>
             <tr>
-                <td> <img id="myImage" name="myImage" th:src="@{/account/authCode}"></td>
-                <td><a href="javascript:void(0)" onclick="myReload()">uncleary!change the image</a></td>
+                <td> <img id="myImage" name="myImage" :src="myImage"></td>
+                <td><a href="#" @click="myReload()">uncleary!change the image</a></td>
             </tr>
-        -->
+       
             <tr>
-                <td> <input type="submit" value="Signin" id="btn" ></td>
+                <td> <input type="button" value="Signin" id="btn" ></td>
                 <td> <input type="button" value="through Phone" id="loginThroughPhone"></td>
             </tr>
             
@@ -56,10 +59,11 @@
         
     </div>
 
+</form>
 
 <!--todo:手机号验证部分-->
-<!--
-<form action="/account/signinPhone" method="post" id="signInPhoneForm">
+
+<form action="#" method="post" id="signInPhoneForm">
     <div id="SignPhone">
         <table align="center">
 
@@ -85,14 +89,14 @@
             </tr>
 
             <tr>
-                <td> <input type="submit" value="Signin"></td>
+                <td> <input type="button" value="Signin"></td>
                 <td> <input type="button" value="through Password" id="loginThroughPassword"></td>
             </tr>
 
         </table>
     </div>
 </form>
--->
+
 
 <p align="center">
     Need a username and password?<a href="../account/account-register.html">Resgister Now!</a>

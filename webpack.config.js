@@ -168,7 +168,7 @@ var config = {
     new HtmlWebpackPlugin(getCatalogHtmlConfig('catalog-main')),
     //view/account下的html请用这个打包
     new HtmlWebpackPlugin(getAccountHtmlConfig('account-signin')),
-    //view/account下的html请用这个打包
+    //view/cart下的html请用这个打包
     new HtmlWebpackPlugin(getCartHtmlConfig('cart')),
 
     new HtmlWebpackPlugin(getOrderHtmlConfig('view-order')),

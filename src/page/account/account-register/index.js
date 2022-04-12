@@ -58,10 +58,10 @@ const isUsernameExist = function(){
                    $('#iEI').hide();
                    return;
                }else if(data === "Not Exist"){
-                   $('#isExistInfo').attr("class","oktips").text('用户名不存在');
+                   $('#isExistInfo').attr("class","oktips").text('用户名可用');
                    return;
                }else if(data === "Exist"){
-                   $('#isExistInfo').attr("class","errortips").text('用户名已存在');
+                   $('#isExistInfo').attr("class","errortips").text('用户名不可用');
                    resolve("用户名存在");
                }
            },

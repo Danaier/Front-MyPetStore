@@ -1,4 +1,7 @@
+var _forgetPassword = require('util/forgetPassword.js');
+var _util = require('util/util.js');
 
+//登陆函数
 const signin = function(){
     return new Promise(function(resolve,reject){
         $.ajax({
@@ -8,8 +11,8 @@ const signin = function(){
             type        :"POST",
             url         :"http://localhost:8090/account/login",
             dataType    :'json',
-            data        :{  username    :   $('#username').val(),
-                            password    :   $('#password').val()
+            data        :{  username    :   $('#signin_name').val(),
+                            password    :   $('#signinpsw').val()
                         },
             success :function(res){
                 if(res.status===0){
@@ -38,7 +41,7 @@ const signin = function(){
     });
 }
 
-
+//判断用户名是否存在
 const isUsernameExist = function(){
      return new Promise(function(resolve,reject){
         $.ajax({
@@ -46,7 +49,7 @@ const isUsernameExist = function(){
                 withCredentials: true
             },
             type    :"GET",
-            url     :"http://localhost:8090/account/usernameIsExist?username="+$('#username').val(),
+            url     :"http://localhost:8090/account/usernameIsExist?username="+$('#signin_name').val(),
             success :function(data){
                 
                 $('#iEI').show();
@@ -69,7 +72,7 @@ const isUsernameExist = function(){
     });
 };
 
-
+//先判断用户名是否存在，再进行登陆
 async function getData(){
     let msg = await isUsernameExist();
     console.log(msg);
@@ -77,6 +80,41 @@ async function getData(){
     console.log(result);
     require('page/common/header/index.js');
 }
+var app = new Vue({
+        el      : '#Sign',
+        data    : {
+            myImage : _util.getSeverURL('account/authCode'),
+            myReload() {
+                document.getElementById("myImage").src = _util.getSeverURL("account/authCode?")+Math.random();
+            }
+        }
+    })
+$(document).ready(function() {
 
-$('#btn').on('click',getData);
+
+    //登陆按钮的绑定（通过密码）
+    $('#btn').on('click',getData);
+
+
+    //切换登陆方式
+    $('#signInPhoneForm').hide();
+    $('#loginThroughPhone').on('click',function (){
+        $('#signInPhoneForm').show();
+        $('#signInPasswordForm').hide();
+    })
+    $('#loginThroughPassword').on('click',function (){
+        $('#signInPasswordForm').show();
+        $('#signInPhoneForm').hide();
+    })
+
+    
+
+
+    //忘記密碼
+    _forgetPassword();
+
+})
+
+
+
 
