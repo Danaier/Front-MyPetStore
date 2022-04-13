@@ -11,7 +11,7 @@ const getUsername = function(){
         _account_service.checkLogin(
             function(data,msg){
                 if(msg==="没有用户登录"){
-                    //window.location.href = '../account/account-signin.html?redirect='+encodeURIComponent(window.location.href);
+                    window.location.href = '../account/account-signin.html?redirect='+encodeURIComponent(window.location.href);
                 }
                 else{  
                     resolve(data.username);      

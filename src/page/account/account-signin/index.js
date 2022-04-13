@@ -1,7 +1,7 @@
 var _forgetPassword = require('util/forgetPassword.js');
 var _util = require('util/util.js');
 
-//登录函数
+//登录函数(通过密码)
 const signin = function(){
     return new Promise(function(resolve,reject){
         $.ajax({
@@ -33,7 +33,7 @@ const signin = function(){
                 else{
                     //todo请求失败
                     alert('fail');
-                } 
+                }
             },
             error :function (){
                 window.alert('error');
@@ -41,6 +41,57 @@ const signin = function(){
         });
     });
 }
+
+//登录函数(通过手机号)
+const signinPhone = function(){
+    _util.request({
+        method  : 'POST',
+        url     : _util.getSeverURL('account/signinPhone'),
+        data    : {
+            username    : $('#usernamePhone').val(),
+            phoneNumber : $('#phoneNumber').val(),
+            inputVCode  : $('#phoneVCode').val(),
+        },
+
+        success : function(data,msg){
+            console.log(msg);
+            if(msg=="登陆成功"){
+                window.location.href = "../../view/catalog/catalog-main.html";
+            }else{
+                $('#errorMsg').attr("class","errortips").text(msg);
+            }
+
+        }
+    })
+}
+
+//发送手机验证码
+const sendPhoneVCode = function(){
+    $('#phoneCode').off("click"); //解除绑定点击事件
+
+    $('#phoneCode').unbind("click");//移除绑定点击事件
+
+    $('#phoneCode').unbind(); //移除所有绑定事件
+
+    $('#phoneCode').on("click",function (){
+
+        var p = $('#phoneNumber').val();
+        var data = "phoneNumber="+ p;
+        console.log(data);
+        
+        _util.request({
+            method  : "POST",
+            url     : _util.getSeverURL("account/phoneVCode"),
+            data    : data,
+            success :function(data,msg){
+                alert(msg);
+            }
+        });
+        
+        
+    });
+}
+
 
 //判断用户名是否存在
 const isUsernameExist = function(){
@@ -149,6 +200,12 @@ $(document).ready(function() {
 
     //忘記密碼
     _forgetPassword();
+
+    //手机号验证码发送
+    sendPhoneVCode();
+
+    //手机号登录
+    $('#signin_Phone').on('click',signinPhone);
 
 })
 
