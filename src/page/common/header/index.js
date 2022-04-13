@@ -24,9 +24,9 @@ const getAccount=function(){
             xhrFields: {
                 withCredentials: true
             },
-            type:"POST",
-            url:"http://localhost:8090/account/get_login_account_info",
-            dataType:"json",
+            type    : "POST",
+            url     : _util.getSeverURL("account/get_login_account_info"),
+            dataType: "json",
             success:function(res){
                 if(res.status===0){
                     if(res.msg==="没有用户登录"){

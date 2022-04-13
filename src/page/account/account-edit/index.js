@@ -6,7 +6,7 @@ const editAccount=function(){
                 withCredentials:true
             },
             type:"POST",
-            url:"http://localhost:8090/account/editAccount",
+            url:_util.getSeverURL("account/editAccount"),
             dataType:"json",
             data:{
                 username    :   $('#username').val(),

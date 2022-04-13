@@ -1,17 +1,18 @@
 var _forgetPassword = require('util/forgetPassword.js');
 var _util = require('util/util.js');
 
-//登陆函数
+//登录函数
 const signin = function(){
     return new Promise(function(resolve,reject){
         $.ajax({
             xhrFields: {
                 withCredentials: true
             },
-            type        :"POST",
-            url         :"http://localhost:8090/account/login",
-            dataType    :'json',
-            data        :{  username    :   $('#signin_name').val(),
+            type        : "POST",
+            url         : _util.getSeverURL("account/login"),
+            dataType    : 'json',
+            data        : {  
+                            username    :   $('#signin_name').val(),
                             password    :   $('#signinpsw').val()
                         },
             success :function(res){
@@ -48,9 +49,9 @@ const isUsernameExist = function(){
             xhrFields: {
                 withCredentials: true
             },
-            type    :"GET",
-            url     :"http://localhost:8090/account/usernameIsExist?username="+$('#signin_name').val(),
-            success :function(data){
+            type    : "GET",
+            url     : _util.getSeverURL("account/usernameIsExist?username=")+$('#signin_name').val(),
+            success : function(data){
                 
                 $('#iEI').show();
 
@@ -72,14 +73,45 @@ const isUsernameExist = function(){
     });
 };
 
-//先判断用户名是否存在，再进行登陆
+
+//获取验证码
+function getAuthCode(){
+    return new Promise(function(resolve,reject){
+        _util.request({
+            url     : _util.getSeverURL('account/getAuthCode'),
+            success : function(data,msg,setValue){
+                console.log(msg);
+                resolve(msg)
+            }
+        })
+    })
+}
+
+//先判断用户名是否存在，再进行登录
 async function getData(){
+
+    //用户是否存在
     let msg = await isUsernameExist();
     console.log(msg);
-    let result = await signin();
-    console.log(result);
-    require('page/common/header/index.js');
+
+    //获取验证码以及判断是否正确
+    let authCode = await getAuthCode();
+    var inputCode = $('#inputCode').val();
+    if (authCode==inputCode){
+        let result = await signin();
+        console.log(result);
+        require('page/common/header/index.js');
+    }else {
+        console.log("inputCode:"+ inputCode);
+        console.log("authCode:" +  authCode);
+        $('#authCodeWrong').show();
+        $('#inputCode').val('');
+        $('#inputCode')[0].focus();
+    }
+    
 }
+
+//通过Vue绑定渲染验证码图片
 var app = new Vue({
         el      : '#Sign',
         data    : {
@@ -88,15 +120,10 @@ var app = new Vue({
                 document.getElementById("myImage").src = _util.getSeverURL("account/authCode?")+Math.random();
             }
         }
-    })
-$(document).ready(function() {
+});
 
-
-    //登陆按钮的绑定（通过密码）
-    $('#btn').on('click',getData);
-
-
-    //切换登陆方式
+//切换登录方式
+var switchSignInForm = function(){
     $('#signInPhoneForm').hide();
     $('#loginThroughPhone').on('click',function (){
         $('#signInPhoneForm').show();
@@ -106,9 +133,19 @@ $(document).ready(function() {
         $('#signInPasswordForm').show();
         $('#signInPhoneForm').hide();
     })
+}
 
-    
 
+$(document).ready(function() {
+
+    //登录按钮的绑定（通过密码）
+    $('#btn').on('click',getData);
+
+    //隐藏验证码错误提示
+    $('#authCodeWrong').hide();
+
+    //切换登陆方式
+    switchSignInForm();
 
     //忘記密碼
     _forgetPassword();

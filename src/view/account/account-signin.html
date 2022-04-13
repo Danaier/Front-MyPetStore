@@ -24,7 +24,7 @@
 </div>
 
 
-<form action="#" method="post" id="signInPasswordForm">
+<form action="#" id="signInPasswordForm">
     <div id="Sign">
         <table align="center">
             <tr>
@@ -43,11 +43,16 @@
         
             <tr>
                 <td> Verification Code:</td>
-                <td><input type="text" name="inputCode" required></td>
+                <td><input type="text" id="inputCode" required></td>
+                
             </tr>
             <tr>
                 <td> <img id="myImage" name="myImage" :src="myImage"></td>
                 <td><a href="#" @click="myReload()">uncleary!change the image</a></td>
+            </tr>
+            <tr style="display: none" id="authCodeWrong">
+                <td></td>
+                <td> <span  id="authCodeWrong" class="errorTips">验证码有误！</span> </td>
             </tr>
        
             <tr>

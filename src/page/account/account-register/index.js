@@ -2,7 +2,7 @@ const register=function(){
     return new Promise(function(resolve,reject){
         $.ajax({
             type:"POST",
-            url:"http://localhost:8090/account/register",
+            url:_util.getSeverURL("account/register"),
             dataType:"json",
             data:{
                 username    :   $('#username').val(),
@@ -49,7 +49,7 @@ const isUsernameExist = function(){
                withCredentials: true
            },*/
            type    :"GET",
-           url     :"http://localhost:8090/account/usernameIsExist?username="+$('#username').val(),
+           url     :_util.getSeverURL("account/usernameIsExist?username=")+$('#username').val(),
            success :function(data){
                
                $('#iEI').show();

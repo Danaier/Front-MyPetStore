@@ -37,7 +37,6 @@ const viewCart = function(username){
                 }else{
                     formCart(data,username);
                 }
-                
             },
             error   : function(){
                 //服务器异常
@@ -62,7 +61,7 @@ const formCart = function(data,username){
                 var quantity = item.target.value;
                 xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = update;
-                xhr.open("POST", "http://localhost:8090/cart/updateCartItem?itemId="+id+"&quantity="+quantity+"&username="+username, true);
+                xhr.open("POST", _util.getSeverURL("cart/updateCartItem?itemId=")+id+"&quantity="+quantity+"&username="+username, true);
                 xhr.send(null);
                 _util.request({
                     url : _util.getSeverURL('cart/getCart'),
