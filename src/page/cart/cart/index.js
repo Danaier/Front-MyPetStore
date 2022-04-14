@@ -3,6 +3,10 @@ var _account_service = require('service/account-service.js');
 import {currency} from 'util/currency'
 Vue.filter("currency",currency);
 
+
+
+
+
 //判断用户是否存在
 const getUsername = function(){
 

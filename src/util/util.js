@@ -1,3 +1,4 @@
+var Hogan = require('hogan.js');
 var config ={
     serverHost  :   'http://localhost:8090/'
 }
@@ -36,6 +37,18 @@ var _util = {
     },
     getSeverURL :  function(path){
         return config.serverHost + path;
+    },
+    renderHtml:function(htmlTemplate,data){
+        var template = Hogan.compile(htmlTemplate);
+        var result = template.render(data);
+        console.log(result);
+        return result;
+    },
+    getURLParam:function(name){
+        var reg = new RegExp('(^|&)'+name+'=([^&]*)(&|$)');
+        var result = window.location.search.substring(1).match(reg);
+        console.log(result);
+        return result ? decodeURIComponent(result[2]):null;
     }
 };
 

@@ -43,14 +43,24 @@
     <div id="QuickLinks">
 
         <img src="../../images/separator.gif"/>
+        <a href="./catalog-list.html?id=FISH&route=product" >FISH</a>
         <img src="../../images/separator.gif"/>
-        <a th:if="${session.allCategoryList.size()} == 0 ">No Category</a>
-        <span th:if="${session.allCategoryList.size()} > 0" >
-            <span th:each="Category:${session.allCategoryList}">
-                <a th:text="${Category.categoryId}" th:href="@{/catalog/viewCategory(categoryId=${Category.categoryId})}"></a>
-                <img src="../../images/separator.gif"/>
-            </span>
-            <img src="../../images/separator.gif"/>
-        </span>
+
+        <img src="../../images/separator.gif"/>
+        <a href="./catalog-list.html?id=DOGS&route=product" >DOGS</a>
+        <img src="../../images/separator.gif"/>
+
+        <img src="../../images/separator.gif"/>
+        <a href="./catalog-list.html?id=CATS&route=product" >CATS</a>
+        <img src="../../images/separator.gif"/>
+
+        <img src="../../images/separator.gif"/>
+        <a href="./catalog-list.html?id=REPTILES&route=product" >REPTILES</a>
+        <img src="../../images/separator.gif"/>
+
+        <img src="../../images/separator.gif"/>
+        <a href="./catalog-list.html?id=BIRDS&route=product" >BIRDS</a>
+        <img src="../../images/separator.gif"/>
+
     </div>
 </div>

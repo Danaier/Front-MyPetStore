@@ -1,0 +1,54 @@
+<h2 id="test">{{listData.title}}</h2>
+    <table>
+        <tr>
+            {{#listData.headList}}
+            <th>{{.}}</th>
+            {{/listData.headList}}
+        </tr>
+
+        {{#listData.productList}}
+        <tr>
+            <td>
+                <a href="./catalog-list.html?id={{productId}}&route=item">{{productId}}</a>
+            </td>
+            <td>{{name}}</td>
+        </tr>
+        {{/listData.productList}}
+
+
+        <script>
+            function addItemTocart(Item)
+            {
+                alert(Item.name);
+                $.ajax({
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    type    :"GET",
+                    url     :"http://localhost:8090/cart/addItemToCart?workingItemId="+Item.name,
+                    success :function(res){
+                        if(res=="success"){
+                            window.location.href = '../cart/cart.html';
+                        }
+                    }
+                })
+            }
+        </script>
+
+
+
+        {{#listData.itemList}}
+        <tr>
+            <td>
+                <a href="./catalog-item.html?id={{itemId}}&route=item">{{itemId}}</a>
+            </td>
+            <td>{{productId}}</td>
+            <td>{{attribute1}}</td>
+            <td>{{listPrice}}</td>
+
+            <td>
+                <a id="{{itemId}}" name="{{itemId}}"  onclick="addItemTocart(this)"  class="Button">Add to Cart</a>
+            </td>
+        {{/listData.itemList}}
+
+    </table>

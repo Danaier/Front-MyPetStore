@@ -31,6 +31,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "hogan.js": "^3.0.2",
     "jquery": "^3.6.0"
   }
 }

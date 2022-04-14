@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <%= require('../common/head.htm') %>
+
+</head>
+<body>
+    <%= require('../common/header.htm') %>
+
+    <div id="Catalog">
+        <table>
+            <tr>
+                <td>
+                    <image />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>itemId</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>attribute1</b>
+                    <b>attribute2</b>
+                </td>
+    
+            </tr>
+            <tr>
+                <td>product.name</td>
+            </tr>
+            <tr>
+                <td>
+                    <span>qty: </span>
+                    <span style="color:blue" >qty</span>
+    
+                </td>
+            </tr>
+            <tr>
+                <td>listPrice</td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="Button" href="/cart/addItemToCart?workingItemId=itemId">Add to Cart</a>
+                </td>
+            </tr>
+        </table>
+    
+    </div>
+
+
+
+    <%= require('../common/footer.htm') %>
+    
+</body>
+</html>
