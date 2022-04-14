@@ -172,7 +172,7 @@ var config = {
     new HtmlWebpackPlugin(getCatalogHtmlConfig('catalog-main')),
     new HtmlWebpackPlugin(getCatalogHtmlConfig('catalog-list')),
     new HtmlWebpackPlugin(getCatalogHtmlConfig('catalog-item')),
-    new HtmlWebpackPlugin(getCatalogHtmlConfig('catalog-searchProduct')),
+  
     
     //view/account下的html请用这个打包
     new HtmlWebpackPlugin(getAccountHtmlConfig('account-signin')),

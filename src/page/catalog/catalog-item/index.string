@@ -47,7 +47,7 @@
                             withCredentials: true
                         },
                         type    :"GET",
-                        url     :"http://localhost:8090/cart/addItemToCart?workingItemId="+Item.name,
+                        url     :"http://localhost:80/api/cart/addItemToCart?workingItemId="+Item.name,
                         success :function(res){
                             if(res=="success"){
                                 window.location.href = '../cart/cart.html';

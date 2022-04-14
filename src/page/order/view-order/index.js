@@ -4,7 +4,7 @@ const getCart = function(){
                withCredentials: true
            },
            type    :"GET",
-           url     :"http://localhost:8090/order/getConfirmOrder",
+           url     :"http://localhost:80/api/order/getConfirmOrder",
            success :function(res){
 
                 let data = res.data;

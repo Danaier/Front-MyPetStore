@@ -1,6 +1,6 @@
 var Hogan = require('hogan.js');
 var config ={
-    serverHost  :   'http://localhost:8090/'
+    serverHost  :   'http://localhost:80/api/'
 }
 
 var _util = {

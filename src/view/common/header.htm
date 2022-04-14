@@ -56,7 +56,7 @@
                 function (request,response){
                 $.ajax({
                     type    : "GET",
-                    url     : "http://localhost:8090/catalog/searchThis?keyword="+$("#searchbar").val(),
+                    url     : "http://localhost:80/api/catalog/searchThis?keyword="+$("#searchbar").val(),
                     success : function (data){
                             // console.log(strToJson(data));
                             response(strToJson(data));

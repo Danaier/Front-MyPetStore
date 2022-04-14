@@ -6,7 +6,7 @@ const  confirmOrder= function(){
                 withCredentials: true
             },
             type        :"POST",
-            url         :"http://localhost:8090/order/confirmOrder",
+            url         :"http://localhost:80/api/order/confirmOrder",
             dataType    :'json',
             data        :{  cardType                    :   $('#cardType').val(),
                             creditCard                  :   $('#creditCard').val(),
@@ -49,7 +49,7 @@ const getCart = function(){
             withCredentials: true
         },
         type    :"GET",
-        url     :"http://localhost:8090/order/getOrder",
+        url     :"http://localhost:80/api/order/getOrder",
         success :function(res){
 
              let data = res.data;

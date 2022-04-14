@@ -55,7 +55,7 @@ const signinPhone = function(){
 
         success : function(data,msg){
             console.log(msg);
-            if(msg=="登陆成功"){
+            if(msg=="登录成功"){
                 window.location.href = "../../view/catalog/catalog-main.html";
             }else{
                 $('#errorMsg').attr("class","errortips").text(msg);
