@@ -19,7 +19,7 @@
         <script>
             function addItemTocart(Item)
             {
-                alert(Item.name);
+                alert("success");
                 $.ajax({
                     xhrFields: {
                         withCredentials: true

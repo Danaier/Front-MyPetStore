@@ -36,9 +36,30 @@
                     <span>{{itemData.data.listPrice}}$</span>
                 </td>
             </tr>
+
+
+            <script>
+                function addItemTocart(Item)
+                {
+                    alert("success");
+                    $.ajax({
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        type    :"GET",
+                        url     :"http://localhost:8090/cart/addItemToCart?workingItemId="+Item.name,
+                        success :function(res){
+                            if(res=="success"){
+                                window.location.href = '../cart/cart.html';
+                            }
+                        }
+                    })
+                }
+            </script>
+
             <tr>
                 <td>
-                   <a href="./cart.html?{{itemData.data.itemId}}" class="Button">Add to Cart</a>
+                    <a id="{{itemData.data.itemId}}" name="{{itemData.data.itemId}}"  onclick="addItemTocart(this)"  class="Button">Add to Cart</a>
                 </td>
             </tr>
         </table>
