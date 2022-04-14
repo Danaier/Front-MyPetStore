@@ -21,7 +21,7 @@
 
             <img align="middle" src="../../images/separator.gif" />
 
-            <a id="getAccount" href="../../view/account/account-edit.html" >My Account</a>
+            <a id="getAccount" href="#" >My Account</a>
 
             <img align="middle" src="../../images/separator.gif" />
 
@@ -39,27 +39,55 @@
         </div>
     </div>
 
+    
+    <script>
+ 
+        
+        function strToJson(str){
+            var json = (new Function("return"+str))();
+            return json;
+        }
+
+        // 搜索补全 
+        $("#searchbar").autocomplete({
+
+            source:
+            // "searchThis?keyword="+$("#searchbar").val(),
+                function (request,response){
+                $.ajax({
+                    type    : "GET",
+                    url     : "http://localhost:8090/catalog/searchThis?keyword="+$("#searchbar").val(),
+                    success : function (data){
+                            // console.log(strToJson(data));
+                            response(strToJson(data));
+                    }
+                })
+            },
+            minLength: 1,
+        });
+    </script>
+
 
     <div id="QuickLinks">
 
         <img src="../../images/separator.gif"/>
-        <a href="./catalog-list.html?id=FISH&route=product" >FISH</a>
+        <a href="../catalog/catalog-list.html?id=FISH&route=product" >FISH</a>
         <img src="../../images/separator.gif"/>
 
         <img src="../../images/separator.gif"/>
-        <a href="./catalog-list.html?id=DOGS&route=product" >DOGS</a>
+        <a href="../catalog/catalog-list.html?id=DOGS&route=product" >DOGS</a>
         <img src="../../images/separator.gif"/>
 
         <img src="../../images/separator.gif"/>
-        <a href="./catalog-list.html?id=CATS&route=product" >CATS</a>
+        <a href="../catalog/catalog-list.html?id=CATS&route=product" >CATS</a>
         <img src="../../images/separator.gif"/>
 
         <img src="../../images/separator.gif"/>
-        <a href="./catalog-list.html?id=REPTILES&route=product" >REPTILES</a>
+        <a href="../catalog/catalog-list.html?id=REPTILES&route=product" >REPTILES</a>
         <img src="../../images/separator.gif"/>
 
         <img src="../../images/separator.gif"/>
-        <a href="./catalog-list.html?id=BIRDS&route=product" >BIRDS</a>
+        <a href="../catalog/catalog-list.html?id=BIRDS&route=product" >BIRDS</a>
         <img src="../../images/separator.gif"/>
 
     </div>

@@ -1,6 +1,7 @@
 // require('page/common/header/index.js');
 var _util = require('util/util.js');
 var _account_service = require('service/account-service.js');
+var _floatingWindow = require('util/floatingWindow.js');
 
 //快速登陆
 const fastsignin = function(){
@@ -57,16 +58,15 @@ async function fastsigninlogo(){
     
 }
 
-
-
-
-
-
 $(document).ready(function (){
 
     //快速登陆
     $('#fast_signin').on('click',fastsignin);
+
     //快速登陆按钮的显示隐藏
     fastsigninlogo();
-    
+
+    //悬浮窗
+    _floatingWindow();
+
 })

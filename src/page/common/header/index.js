@@ -1,5 +1,7 @@
 var _account_service = require('service/account-service.js');
 const _util = require('../../../util/util');
+import('page/common/jq/jquery-3.6.0.min.js');
+import('page/common/jq/jquery-ui.min.js');
 
 const signout = function(){
         
@@ -34,6 +36,7 @@ const getAccount=function(){
                         window.location.href = '../../view/account/account-signin.html?redirect='+encodeURIComponent(window.location.href);
                     }else{
                     //从后端传值到前端
+                    window.location.href = '../../view/account/account-edit.html?redirect='+encodeURIComponent(window.location.href);
                     let data=res.data;
                     console.log(data);
                     $('#username').val(data.username);
@@ -76,6 +79,8 @@ var header = {
 
         $('#signout').on("click",signout);
 
+        
+
     },
     loadAccountInfo : function(){
         _account_service.checkLogin(
@@ -98,6 +103,11 @@ var header = {
         );
     }
 };
+
+
+
+
+
 module.exports = header.init();
 
 

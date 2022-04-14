@@ -1,4 +1,8 @@
 //修改用户信息
+
+var _util = require('util/util.js');
+var _account_service = require('service/account-service.js');
+
 const editAccount=function(){
     return new Promise(function(resolve,reject){
         $.ajax({
@@ -31,7 +35,14 @@ const editAccount=function(){
                     }else{
                         //修改成功后跳往登录页面
                         resolve("修改成功");
+                        _util.request({
+                            url : _util.getSeverURL('account/signout'),
+                            success : function(data,msg){
+                                console.log('sign out')
+                            }
+                        });
                         window.location.href="../../view/account/account-signin.html";
+
                     }
                 }else{
                     alert('fail');
@@ -46,7 +57,8 @@ const editAccount=function(){
 
 $('#editbtn').on('click',editAccount);
 
-/*
+
+
 //判断用户是否登录
 const isLogin=function(){
     return new Promise(
@@ -68,30 +80,31 @@ const isLogin=function(){
     )
 }
 
-//渲染账户信息界面
+// 渲染账户信息界面
 const viewAccount=function(data){
     return new Promise(
         function(resolve,reject){
             _util.request({
-                url:_util.getSeverURL('account/get_login_account_info'),
-                success:function(data){
+                method  : 'POST',
+                url     :_util.getSeverURL('account/get_login_account_info'),
+                success :function(data,msg){
                    //let data=res.data;
                     console.log(data);
                     console.log(data.username);
-                    $('#username').text(data.username);
-                    $('#password').text(data.password);
-                    $('#repeatpwd').text(data.password);
-                    $('#phoneNumber').text(data.phone);
-                    $('#firstname').text(data.firstname);
-                    $('#lastname').text(data.lastname);
-                    $('#email').text(data.email);
-                    $('#address1').text(data.address1);
-                    $('#address2').text(data.address2);
-                    $('#city').text(data.city);
-                    $('#zip').text(data.zip);
-                    $('#state').text(data.state);
-                    $('#country').text(data.country);
-                    $('#languagepre').text(data.languagepre);
+                    $('#username').val(data.username);
+                    $('#password').val(data.password);
+                    $('#repeatpwd').val(data.password);
+                    $('#phoneNumber').val(data.phone);
+                    $('#firstname').val(data.firstname);
+                    $('#lastname').val(data.lastname);
+                    $('#email').val(data.email);
+                    $('#address1').val(data.address1);
+                    $('#address2').val(data.address2);
+                    $('#city').val(data.city);
+                    $('#zip').val(data.zip);
+                    $('#state').val(data.state);
+                    $('#country').val(data.country);
+                    $('#languagepre').val(data.languagepre);
                 }
             })
         }
@@ -106,4 +119,4 @@ async function getAccount(){
 
 $(document).ready(function(){
     getAccount();
-})*/
+})
