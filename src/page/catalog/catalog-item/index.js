@@ -9,6 +9,10 @@ const addItemTocart = function(){
 
 
 var item={
+    itemData    :{
+        image   :   '',
+        data    :   {}
+    },
     init:function(){
         this.bindEvent();
         this.loadAccountInfo();
@@ -19,6 +23,7 @@ var item={
     },
     loadAccountInfo:function(){
         var id = _util.getURLParam('id');
+        
         // var route =_util.getURLParam('route');
         var _this =this;
 
@@ -27,8 +32,12 @@ var item={
         _catalog_service.getItem(id,
             function(data,msg){
                 //console.log(data);
+                // <img src="../../../images/bird3.gif" />
+                // /images/bird3.gif
+                _this.itemData.data=data;
+                _this.itemData.image=data.productDescription;
 
-                var result = _util.renderHtml(listTemplate,{data});
+                var result = _util.renderHtml(listTemplate,{itemData:_this.itemData});
                 console.log(result);
                 $('#Catalog').html(result);
             },

@@ -2,43 +2,43 @@
         <table>
             <tr>
                 <td>
-                
-                    <img src="../../../images/banner_fish.gif" />
+                    {{{itemData.image}}}
+                    
                 </td>
             </tr>
             <tr>
                 <td>
                     <span>itemId: </span>
-                    <span>{{data.itemId}}</span>
+                    <span>{{itemData.data.itemId}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <span>description: </span>
-                    <span>{{data.attribute1}}</span>
+                    <span>{{itemData.data.attribute1}}</span>
                 </td>
             </tr>
             <tr>
                  <td>
                     <span>productId: </span>
-                    <span>{{data.productId}}</span>
+                    <span>{{itemData.data.productId}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <span>qty: </span>
-                    <span style="color:blue" >{{data.quantity}}</span>
+                    <span style="color:blue" >{{itemData.data.quantity}}</span>
                 </td>
             </tr>
             <tr>
                 <td>
                      <span>listPrice: </span>
-                    <span>{{data.listPrice}}$</span>
+                    <span>{{itemData.data.listPrice}}$</span>
                 </td>
             </tr>
             <tr>
                 <td>
-                   <a href="./cart.html?{{data.itemId}}" class="Button">Add to Cart</a>
+                   <a href="./cart.html?{{itemData.data.itemId}}" class="Button">Add to Cart</a>
                 </td>
             </tr>
         </table>
